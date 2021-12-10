@@ -1,0 +1,30 @@
+<html>
+<script src="flv.js"></script>
+<video id="videoElement"></video>
+<script>
+    if (flvjs.isSupported()) {
+        var videoElement = document.getElementById('videoElement');
+        var flvPlayer = flvjs.createPlayer({
+            type: 'flv',
+            "isLive": true,
+            url: 'http://192.168.54.34:8000/live/KMSHCC.flv'
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+    }
+</script>
+<script>
+var video = document.getElementById("videoElement");
+
+function toggleControls() {
+  if (video.hasAttribute("controls")) {
+     video.removeAttribute("controls")   
+  } else {
+     video.setAttribute("controls","controls")   
+  }
+}
+</script>
+<br />
+<button onclick="flvPlayer.play()">Play</button>
+<button onclick="toggleControls()">Enable Fullscreen Controls</button>
+</html>
